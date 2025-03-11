@@ -113,8 +113,10 @@ class SearchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SearchResponse:
         """
-        The primary search interface for Smart Buckets, providing advanced semantic
-        search capabilities that go far beyond traditional keyword matching.
+        Primary search endpoint that provides advanced search capabilities across all
+        document types stored in Smart Buckets. Supports recursive object search within
+        documents, enabling queries for nested content like embedded images, text
+        content, and personally identifiable information (PII).
 
         The system supports complex queries like:
 
@@ -122,23 +124,24 @@ class SearchResource(SyncAPIResource):
         - 'Find images of landscapes taken during sunset'
         - 'Get documents mentioning revenue forecasts from Q4 2023'
         - 'Find me all PDF documents that contain pictures of a cat'
+        - 'find me all audio files that contain infomration about the weather in SF in
+          2024'
 
         Key capabilities:
 
         - Natural language query understanding
-        - Content-based search across text and images
-        - Automatic PII detection and filtering
-        - Cross-document relationship analysis
+        - Content-based search across text, images, and audio
+        - Automatic PII detection
         - Multi-modal search (text, images, audio)
 
         Args:
           input: Natural language search query that can include complex criteria
 
           request_id: Client-provided search session identifier. Required for pagination and result
-              tracking
+              tracking. We recommend using a UUID or ULID for this value.
 
-          bucket_ids: Optional list of specific bucket IDs to search in. If not provided, searches all
-              accessible buckets
+          bucket_ids: Optional list of specific bucket IDs to search in. If not provided, searches the
+              latest version of all buckets
 
           extra_headers: Send extra headers
 
@@ -252,8 +255,10 @@ class AsyncSearchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> SearchResponse:
         """
-        The primary search interface for Smart Buckets, providing advanced semantic
-        search capabilities that go far beyond traditional keyword matching.
+        Primary search endpoint that provides advanced search capabilities across all
+        document types stored in Smart Buckets. Supports recursive object search within
+        documents, enabling queries for nested content like embedded images, text
+        content, and personally identifiable information (PII).
 
         The system supports complex queries like:
 
@@ -261,23 +266,24 @@ class AsyncSearchResource(AsyncAPIResource):
         - 'Find images of landscapes taken during sunset'
         - 'Get documents mentioning revenue forecasts from Q4 2023'
         - 'Find me all PDF documents that contain pictures of a cat'
+        - 'find me all audio files that contain infomration about the weather in SF in
+          2024'
 
         Key capabilities:
 
         - Natural language query understanding
-        - Content-based search across text and images
-        - Automatic PII detection and filtering
-        - Cross-document relationship analysis
+        - Content-based search across text, images, and audio
+        - Automatic PII detection
         - Multi-modal search (text, images, audio)
 
         Args:
           input: Natural language search query that can include complex criteria
 
           request_id: Client-provided search session identifier. Required for pagination and result
-              tracking
+              tracking. We recommend using a UUID or ULID for this value.
 
-          bucket_ids: Optional list of specific bucket IDs to search in. If not provided, searches all
-              accessible buckets
+          bucket_ids: Optional list of specific bucket IDs to search in. If not provided, searches the
+              latest version of all buckets
 
           extra_headers: Send extra headers
 

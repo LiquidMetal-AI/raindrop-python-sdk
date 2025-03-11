@@ -15,4 +15,4 @@ class SummarizePageCreateParams(TypedDict, total=False):
     """Target page number (1-based)"""
 
     page_size: int
-    """Results per page. Affects summary granularity"""
+    """Results per page. Affects how many documents are included in the summary"""

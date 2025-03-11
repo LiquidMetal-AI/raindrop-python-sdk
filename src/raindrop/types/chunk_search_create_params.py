@@ -16,10 +16,13 @@ class ChunkSearchCreateParams(TypedDict, total=False):
     """
 
     request_id: Required[str]
-    """Client-provided search session identifier. Required for result tracking"""
+    """Client-provided search session identifier.
+
+    We recommend using a UUID or ULID for this value.
+    """
 
     bucket_ids: List[str]
     """Optional list of specific bucket IDs to search in.
 
-    If not provided, searches all accessible buckets
+    If not provided, searches the latest version of all accessible buckets
     """
