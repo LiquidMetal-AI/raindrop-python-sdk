@@ -15,11 +15,12 @@ class SearchPerformParams(TypedDict, total=False):
     request_id: Required[str]
     """Client-provided search session identifier.
 
-    Required for pagination and result tracking
+    Required for pagination and result tracking. We recommend using a UUID or ULID
+    for this value.
     """
 
     bucket_ids: List[str]
     """Optional list of specific bucket IDs to search in.
 
-    If not provided, searches all accessible buckets
+    If not provided, searches the latest version of all buckets
     """

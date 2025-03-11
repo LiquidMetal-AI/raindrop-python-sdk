@@ -60,8 +60,8 @@ class SummarizePageResource(SyncAPIResource):
         """
         Generates intelligent summaries of search result pages, helping users quickly
         understand large result sets without reading through every document. The system
-        analyzes the content of all results on a given page and generates a
-        comprehensive overview.
+        analyzes the content of all results on a given page and generates a detailed
+        overview.
 
         The summary system:
 
@@ -69,14 +69,13 @@ class SummarizePageResource(SyncAPIResource):
         - Extracts important findings
         - Highlights document relationships
         - Provides content type distribution
-        - Summarizes metadata patterns
 
         Args:
           request_id: Client-provided search session identifier from the original search
 
           page: Target page number (1-based)
 
-          page_size: Results per page. Affects summary granularity
+          page_size: Results per page. Affects how many documents are included in the summary
 
           extra_headers: Send extra headers
 
@@ -139,8 +138,8 @@ class AsyncSummarizePageResource(AsyncAPIResource):
         """
         Generates intelligent summaries of search result pages, helping users quickly
         understand large result sets without reading through every document. The system
-        analyzes the content of all results on a given page and generates a
-        comprehensive overview.
+        analyzes the content of all results on a given page and generates a detailed
+        overview.
 
         The summary system:
 
@@ -148,14 +147,13 @@ class AsyncSummarizePageResource(AsyncAPIResource):
         - Extracts important findings
         - Highlights document relationships
         - Provides content type distribution
-        - Summarizes metadata patterns
 
         Args:
           request_id: Client-provided search session identifier from the original search
 
           page: Target page number (1-based)
 
-          page_size: Results per page. Affects summary granularity
+          page_size: Results per page. Affects how many documents are included in the summary
 
           extra_headers: Send extra headers
 

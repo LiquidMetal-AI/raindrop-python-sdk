@@ -29,5 +29,6 @@ class DocumentQueryCreateParams(TypedDict, total=False):
     request_id: Required[str]
     """Client-provided conversation session identifier.
 
-    Required for maintaining context in follow-up questions
+    Required for maintaining context in follow-up questions. We recommend using a
+    UUID or ULID for this value.
     """

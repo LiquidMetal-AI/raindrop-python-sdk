@@ -65,14 +65,19 @@ class ChunkSearchResource(SyncAPIResource):
         to leverage private data stored in Smart Buckets with zero additional
         configuration.
 
+        Each input query is processed by our AI agent to determine the best way to
+        search the data. The system will then return the most relevant results from the
+        data ranked by relevance on the input query.
+
         Args:
           input: Natural language query or question. Can include complex criteria and
               relationships
 
-          request_id: Client-provided search session identifier. Required for result tracking
+          request_id: Client-provided search session identifier. We recommend using a UUID or ULID for
+              this value.
 
-          bucket_ids: Optional list of specific bucket IDs to search in. If not provided, searches all
-              accessible buckets
+          bucket_ids: Optional list of specific bucket IDs to search in. If not provided, searches the
+              latest version of all accessible buckets
 
           extra_headers: Send extra headers
 
@@ -138,14 +143,19 @@ class AsyncChunkSearchResource(AsyncAPIResource):
         to leverage private data stored in Smart Buckets with zero additional
         configuration.
 
+        Each input query is processed by our AI agent to determine the best way to
+        search the data. The system will then return the most relevant results from the
+        data ranked by relevance on the input query.
+
         Args:
           input: Natural language query or question. Can include complex criteria and
               relationships
 
-          request_id: Client-provided search session identifier. Required for result tracking
+          request_id: Client-provided search session identifier. We recommend using a UUID or ULID for
+              this value.
 
-          bucket_ids: Optional list of specific bucket IDs to search in. If not provided, searches all
-              accessible buckets
+          bucket_ids: Optional list of specific bucket IDs to search in. If not provided, searches the
+              latest version of all accessible buckets
 
           extra_headers: Send extra headers
 

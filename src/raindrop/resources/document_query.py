@@ -60,20 +60,21 @@ class DocumentQueryResource(SyncAPIResource):
     ) -> DocumentQueryCreateResponse:
         """
         Enables natural conversational interactions with documents stored in Smart
-        Buckets. This creates an intelligent interface for document exploration through
-        natural dialogue, allowing users to ask questions, request summaries, and
-        extract insights from any supported document type.
+        Buckets.
 
-        The chat system maintains conversation context, enabling follow-up questions and
-        deep exploration of document content. It works across all supported file types
-        and automatically handles multi-page documents, making complex document
-        interaction as simple as having a conversation.
+        The query system maintains conversation context throught the request_id,
+        enabling follow-up questions and deep exploration of document content. It works
+        across all supported file types and automatically handles multi-page documents,
+        making complex file interaction as simple as having a conversation.
 
         The system will:
 
         - Maintain conversation history for context when using the same request_id
-        - Process questions against document content
+        - Process questions against file content
         - Generate contextual, relevant responses
+
+        Document query is supported for all file types, including PDFs, images, and
+        audio files.
 
         Args:
           bucket: The storage bucket ID containing the target document. Must be an accessible
@@ -85,7 +86,8 @@ class DocumentQueryResource(SyncAPIResource):
           object_id: Document identifier within the bucket. Typically matches the storage path or key
 
           request_id: Client-provided conversation session identifier. Required for maintaining
-              context in follow-up questions
+              context in follow-up questions. We recommend using a UUID or ULID for this
+              value.
 
           extra_headers: Send extra headers
 
@@ -149,20 +151,21 @@ class AsyncDocumentQueryResource(AsyncAPIResource):
     ) -> DocumentQueryCreateResponse:
         """
         Enables natural conversational interactions with documents stored in Smart
-        Buckets. This creates an intelligent interface for document exploration through
-        natural dialogue, allowing users to ask questions, request summaries, and
-        extract insights from any supported document type.
+        Buckets.
 
-        The chat system maintains conversation context, enabling follow-up questions and
-        deep exploration of document content. It works across all supported file types
-        and automatically handles multi-page documents, making complex document
-        interaction as simple as having a conversation.
+        The query system maintains conversation context throught the request_id,
+        enabling follow-up questions and deep exploration of document content. It works
+        across all supported file types and automatically handles multi-page documents,
+        making complex file interaction as simple as having a conversation.
 
         The system will:
 
         - Maintain conversation history for context when using the same request_id
-        - Process questions against document content
+        - Process questions against file content
         - Generate contextual, relevant responses
+
+        Document query is supported for all file types, including PDFs, images, and
+        audio files.
 
         Args:
           bucket: The storage bucket ID containing the target document. Must be an accessible
@@ -174,7 +177,8 @@ class AsyncDocumentQueryResource(AsyncAPIResource):
           object_id: Document identifier within the bucket. Typically matches the storage path or key
 
           request_id: Client-provided conversation session identifier. Required for maintaining
-              context in follow-up questions
+              context in follow-up questions. We recommend using a UUID or ULID for this
+              value.
 
           extra_headers: Send extra headers
 
