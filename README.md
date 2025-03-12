@@ -1,6 +1,6 @@
 # Raindrop Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/lm-raindrop.svg)](https://pypi.org/project/lm-raindrop/)
+[![PyPI version](https://img.shields.io/pypi/v/lm_raindrop.svg)](https://pypi.org/project/lm_raindrop/)
 
 The Raindrop Python library provides convenient access to the Raindrop REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
@@ -16,7 +16,7 @@ The REST API documentation can be found on [docs.raindrop.com](https://docs.rain
 
 ```sh
 # install from PyPI
-pip install --pre lm-raindrop
+pip install --pre lm_raindrop
 ```
 
 ## Usage
