@@ -4,8 +4,8 @@ from typing import Sequence
 
 import pytest
 
-from raindrop._types import FileTypes
-from raindrop._utils import extract_files
+from lm_raindrop._types import FileTypes
+from lm_raindrop._utils import extract_files
 
 
 def test_removes_files_from_input() -> None:

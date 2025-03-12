@@ -21,19 +21,19 @@ import pytest
 from respx import MockRouter
 from pydantic import ValidationError
 
-from raindrop import Raindrop, AsyncRaindrop, APIResponseValidationError
-from raindrop._types import Omit
-from raindrop._utils import maybe_transform
-from raindrop._models import BaseModel, FinalRequestOptions
-from raindrop._constants import RAW_RESPONSE_HEADER
-from raindrop._exceptions import RaindropError, APIStatusError, APITimeoutError, APIResponseValidationError
-from raindrop._base_client import (
+from lm_raindrop import Raindrop, AsyncRaindrop, APIResponseValidationError
+from lm_raindrop._types import Omit
+from lm_raindrop._utils import maybe_transform
+from lm_raindrop._models import BaseModel, FinalRequestOptions
+from lm_raindrop._constants import RAW_RESPONSE_HEADER
+from lm_raindrop._exceptions import RaindropError, APIStatusError, APITimeoutError, APIResponseValidationError
+from lm_raindrop._base_client import (
     DEFAULT_TIMEOUT,
     HTTPX_DEFAULT_TIMEOUT,
     BaseClient,
     make_request_options,
 )
-from raindrop.types.search_perform_params import SearchPerformParams
+from lm_raindrop.types.search_perform_params import SearchPerformParams
 
 from .utils import update_env
 
@@ -232,10 +232,10 @@ class TestRaindrop:
                         # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
                         #
                         # removing the decorator fixes the leak for reasons we don't understand.
-                        "raindrop/_legacy_response.py",
-                        "raindrop/_response.py",
+                        "lm_raindrop/_legacy_response.py",
+                        "lm_raindrop/_response.py",
                         # pydantic.BaseModel.model_dump || pydantic.BaseModel.dict leak memory for some reason.
-                        "raindrop/_compat.py",
+                        "lm_raindrop/_compat.py",
                         # Standard library leaks we don't care about.
                         "/logging/__init__.py",
                     ]
@@ -711,7 +711,7 @@ class TestRaindrop:
         calculated = client._calculate_retry_timeout(remaining_retries, options, headers)
         assert calculated == pytest.approx(timeout, 0.5 * 0.875)  # pyright: ignore[reportUnknownMemberType]
 
-    @mock.patch("raindrop._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("lm_raindrop._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.post("/v1/search").mock(side_effect=httpx.TimeoutException("Test timeout error"))
@@ -728,7 +728,7 @@ class TestRaindrop:
 
         assert _get_open_connections(self.client) == 0
 
-    @mock.patch("raindrop._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("lm_raindrop._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.post("/v1/search").mock(return_value=httpx.Response(500))
@@ -746,7 +746,7 @@ class TestRaindrop:
         assert _get_open_connections(self.client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
-    @mock.patch("raindrop._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("lm_raindrop._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     @pytest.mark.parametrize("failure_mode", ["status", "exception"])
     def test_retries_taken(
@@ -777,7 +777,7 @@ class TestRaindrop:
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
-    @mock.patch("raindrop._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("lm_raindrop._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_omit_retry_count_header(
         self, client: Raindrop, failures_before_success: int, respx_mock: MockRouter
@@ -802,7 +802,7 @@ class TestRaindrop:
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
-    @mock.patch("raindrop._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("lm_raindrop._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_overwrite_retry_count_header(
         self, client: Raindrop, failures_before_success: int, respx_mock: MockRouter
@@ -1002,10 +1002,10 @@ class TestAsyncRaindrop:
                         # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
                         #
                         # removing the decorator fixes the leak for reasons we don't understand.
-                        "raindrop/_legacy_response.py",
-                        "raindrop/_response.py",
+                        "lm_raindrop/_legacy_response.py",
+                        "lm_raindrop/_response.py",
                         # pydantic.BaseModel.model_dump || pydantic.BaseModel.dict leak memory for some reason.
-                        "raindrop/_compat.py",
+                        "lm_raindrop/_compat.py",
                         # Standard library leaks we don't care about.
                         "/logging/__init__.py",
                     ]
@@ -1495,7 +1495,7 @@ class TestAsyncRaindrop:
         calculated = client._calculate_retry_timeout(remaining_retries, options, headers)
         assert calculated == pytest.approx(timeout, 0.5 * 0.875)  # pyright: ignore[reportUnknownMemberType]
 
-    @mock.patch("raindrop._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("lm_raindrop._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.post("/v1/search").mock(side_effect=httpx.TimeoutException("Test timeout error"))
@@ -1512,7 +1512,7 @@ class TestAsyncRaindrop:
 
         assert _get_open_connections(self.client) == 0
 
-    @mock.patch("raindrop._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("lm_raindrop._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.post("/v1/search").mock(return_value=httpx.Response(500))
@@ -1530,7 +1530,7 @@ class TestAsyncRaindrop:
         assert _get_open_connections(self.client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
-    @mock.patch("raindrop._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("lm_raindrop._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     @pytest.mark.asyncio
     @pytest.mark.parametrize("failure_mode", ["status", "exception"])
@@ -1562,7 +1562,7 @@ class TestAsyncRaindrop:
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
-    @mock.patch("raindrop._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("lm_raindrop._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     @pytest.mark.asyncio
     async def test_omit_retry_count_header(
@@ -1588,7 +1588,7 @@ class TestAsyncRaindrop:
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
-    @mock.patch("raindrop._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("lm_raindrop._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     @pytest.mark.asyncio
     async def test_overwrite_retry_count_header(
@@ -1624,8 +1624,8 @@ class TestAsyncRaindrop:
         import nest_asyncio
         import threading
 
-        from raindrop._utils import asyncify
-        from raindrop._base_client import get_platform 
+        from lm_raindrop._utils import asyncify
+        from lm_raindrop._base_client import get_platform 
 
         async def test_main() -> None:
             result = await asyncify(get_platform)()

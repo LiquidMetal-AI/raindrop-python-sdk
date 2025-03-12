@@ -61,6 +61,6 @@
   ],
   "release-type": "python",
   "extra-files": [
-    "src/raindrop/_version.py"
+    "src/lm_raindrop/_version.py"
   ]
 }
