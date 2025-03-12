@@ -6,8 +6,8 @@ import httpx
 import pytest
 import pydantic
 
-from raindrop import Raindrop, BaseModel, AsyncRaindrop
-from raindrop._response import (
+from lm_raindrop import Raindrop, BaseModel, AsyncRaindrop
+from lm_raindrop._response import (
     APIResponse,
     BaseAPIResponse,
     AsyncAPIResponse,
@@ -15,8 +15,8 @@ from raindrop._response import (
     AsyncBinaryAPIResponse,
     extract_response_type,
 )
-from raindrop._streaming import Stream
-from raindrop._base_client import FinalRequestOptions
+from lm_raindrop._streaming import Stream
+from lm_raindrop._base_client import FinalRequestOptions
 
 
 class ConcreteBaseAPIResponse(APIResponse[bytes]): ...
@@ -37,7 +37,7 @@ def test_extract_response_type_direct_classes() -> None:
 def test_extract_response_type_direct_class_missing_type_arg() -> None:
     with pytest.raises(
         RuntimeError,
-        match="Expected type <class 'raindrop._response.AsyncAPIResponse'> to have a type argument at index 0 but it did not",
+        match="Expected type <class 'lm_raindrop._response.AsyncAPIResponse'> to have a type argument at index 0 but it did not",
     ):
         extract_response_type(AsyncAPIResponse)
 
@@ -68,7 +68,7 @@ def test_response_parse_mismatched_basemodel(client: Raindrop) -> None:
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from raindrop import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from lm_raindrop import BaseModel`",
     ):
         response.parse(to=PydanticModel)
 
@@ -86,7 +86,7 @@ async def test_async_response_parse_mismatched_basemodel(async_client: AsyncRain
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from raindrop import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from lm_raindrop import BaseModel`",
     ):
         await response.parse(to=PydanticModel)
 
