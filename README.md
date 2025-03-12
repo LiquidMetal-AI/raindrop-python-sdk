@@ -1,6 +1,6 @@
 # Raindrop Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/lm-raindrop.svg)](https://pypi.org/project/lm-raindrop/)
+[![PyPI version](https://img.shields.io/pypi/v/raindrop.svg)](https://pypi.org/project/raindrop/)
 
 The Raindrop Python library provides convenient access to the Raindrop REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
@@ -15,9 +15,12 @@ The REST API documentation can be found on [docs.raindrop.com](https://docs.rain
 ## Installation
 
 ```sh
-# install from PyPI
-pip install --pre lm-raindrop
+# install from the production repo
+pip install git+ssh://git@github.com/LiquidMetal-AI/raindrop-python-sdk.git
 ```
+
+> [!NOTE]
+> Once this package is [published to PyPI](https://app.stainless.com/docs/guides/publish), this will become: `pip install --pre raindrop`
 
 ## Usage
 
