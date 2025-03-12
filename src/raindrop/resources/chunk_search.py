@@ -33,7 +33,7 @@ class ChunkSearchResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/raindrop-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/LiquidMetal-AI/raindrop-python-sdk#accessing-raw-response-data-eg-headers
         """
         return ChunkSearchResourceWithRawResponse(self)
 
@@ -42,7 +42,7 @@ class ChunkSearchResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/raindrop-python#with_streaming_response
+        For more information, see https://www.github.com/LiquidMetal-AI/raindrop-python-sdk#with_streaming_response
         """
         return ChunkSearchResourceWithStreamingResponse(self)
 
@@ -111,7 +111,7 @@ class AsyncChunkSearchResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/raindrop-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/LiquidMetal-AI/raindrop-python-sdk#accessing-raw-response-data-eg-headers
         """
         return AsyncChunkSearchResourceWithRawResponse(self)
 
@@ -120,7 +120,7 @@ class AsyncChunkSearchResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/raindrop-python#with_streaming_response
+        For more information, see https://www.github.com/LiquidMetal-AI/raindrop-python-sdk#with_streaming_response
         """
         return AsyncChunkSearchResourceWithStreamingResponse(self)
 
