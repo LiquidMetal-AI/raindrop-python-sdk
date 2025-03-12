@@ -76,14 +76,14 @@ format = { chain = [
 "check:ruff" = "ruff check ."
 "fix:ruff" = "ruff check --fix ."
 
-"check:importable" = "python -c 'import raindrop'"
+"check:importable" = "python -c 'import lm_raindrop'"
 
 typecheck = { chain = [
   "typecheck:pyright",
   "typecheck:mypy"
 ]}
 "typecheck:pyright" = "pyright"
-"typecheck:verify-types" = "pyright --verifytypes raindrop --ignoreexternal"
+"typecheck:verify-types" = "pyright --verifytypes lm_raindrop --ignoreexternal"
 "typecheck:mypy" = "mypy ."
 
 [build-system]
@@ -96,7 +96,7 @@ include = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/raindrop"]
+packages = ["src/lm_raindrop"]
 
 [tool.hatch.build.targets.sdist]
 # Basically everything except hidden files/directories (such as .github, .devcontainers, .python-version, etc)
@@ -199,7 +199,7 @@ length-sort = true
 length-sort-straight = true
 combine-as-imports = true
 extra-standard-library = ["typing_extensions"]
-known-first-party = ["raindrop", "tests"]
+known-first-party = ["lm_raindrop", "tests"]
 
 [tool.ruff.lint.per-file-ignores]
 "bin/**.py" = ["T201", "T203"]

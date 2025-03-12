@@ -4,7 +4,7 @@ from urllib.parse import unquote
 
 import pytest
 
-from raindrop._qs import Querystring, stringify
+from lm_raindrop._qs import Querystring, stringify
 
 
 def test_empty() -> None:

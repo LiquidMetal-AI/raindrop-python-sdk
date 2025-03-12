@@ -7,9 +7,9 @@ from typing import Any, cast
 
 import pytest
 
-from raindrop import Raindrop, AsyncRaindrop
+from lm_raindrop import Raindrop, AsyncRaindrop
 from tests.utils import assert_matches_type
-from raindrop.types import ChunkSearchCreateResponse
+from lm_raindrop.types import ChunkSearchCreateResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 

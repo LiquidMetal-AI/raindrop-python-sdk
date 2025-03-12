@@ -5,8 +5,8 @@ from typing import Iterator, AsyncIterator
 import httpx
 import pytest
 
-from raindrop import Raindrop, AsyncRaindrop
-from raindrop._streaming import Stream, AsyncStream, ServerSentEvent
+from lm_raindrop import Raindrop, AsyncRaindrop
+from lm_raindrop._streaming import Stream, AsyncStream, ServerSentEvent
 
 
 @pytest.mark.asyncio
