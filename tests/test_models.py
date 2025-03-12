@@ -7,9 +7,9 @@ import pytest
 import pydantic
 from pydantic import Field
 
-from raindrop._utils import PropertyInfo
-from raindrop._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
-from raindrop._models import BaseModel, construct_type
+from lm_raindrop._utils import PropertyInfo
+from lm_raindrop._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
+from lm_raindrop._models import BaseModel, construct_type
 
 
 class BasicModel(BaseModel):
