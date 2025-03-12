@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2025-03-12)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/LiquidMetal-AI/raindrop-python-sdk/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Features
+
+* **api:** manual updates ([#13](https://github.com/LiquidMetal-AI/raindrop-python-sdk/issues/13)) ([c973889](https://github.com/LiquidMetal-AI/raindrop-python-sdk/commit/c9738893a9805f4452f770f3a5da45d387a7a099))
+
 ## 0.1.0-alpha.3 (2025-03-12)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/LiquidMetal-AI/raindrop-python-sdk/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
