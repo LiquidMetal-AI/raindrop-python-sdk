@@ -1,5 +1,5 @@
 [project]
-name = "lm_raindrop"
+name = "lm-raindrop"
 version = "0.1.0-alpha.3"
 description = "The official Python library for the raindrop API"
 dynamic = ["readme"]
