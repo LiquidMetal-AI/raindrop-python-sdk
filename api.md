@@ -46,3 +46,17 @@ from lm_raindrop.types import SummarizePageCreateResponse
 Methods:
 
 - <code title="post /v1/summarize_page">client.summarize_page.<a href="./src/lm_raindrop/resources/summarize_page.py">create</a>(\*\*<a href="src/lm_raindrop/types/summarize_page_create_params.py">params</a>) -> <a href="./src/lm_raindrop/types/summarize_page_create_response.py">SummarizePageCreateResponse</a></code>
+
+# Object
+
+Types:
+
+```python
+from lm_raindrop.types import ObjectDeleteResponse, ObjectUploadResponse
+```
+
+Methods:
+
+- <code title="delete /v1/object/{bucket}/{key}">client.object.<a href="./src/lm_raindrop/resources/object.py">delete</a>(key, \*, bucket) -> <a href="./src/lm_raindrop/types/object_delete_response.py">ObjectDeleteResponse</a></code>
+- <code title="get /v1/object/{bucket}/{key}">client.object.<a href="./src/lm_raindrop/resources/object.py">download</a>(key, \*, bucket) -> BinaryAPIResponse</code>
+- <code title="put /v1/object/{bucket}/{key}">client.object.<a href="./src/lm_raindrop/resources/object.py">upload</a>(key, \*, bucket, \*\*<a href="src/lm_raindrop/types/object_upload_params.py">params</a>) -> <a href="./src/lm_raindrop/types/object_upload_response.py">ObjectUploadResponse</a></code>
