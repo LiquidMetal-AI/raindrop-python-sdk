@@ -60,7 +60,7 @@ class ChunkSearchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ChunkSearchCreateResponse:
         """
-        Chunk Search provides a search capabilities that serve as a complete drop-in
+        Chunk Search provides search capabilities that serve as a complete drop-in
         replacement for traditional RAG pipelines. This system enables AI agents to
         leverage private data stored in Smart Buckets with zero additional
         configuration.
@@ -138,7 +138,7 @@ class AsyncChunkSearchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ChunkSearchCreateResponse:
         """
-        Chunk Search provides a search capabilities that serve as a complete drop-in
+        Chunk Search provides search capabilities that serve as a complete drop-in
         replacement for traditional RAG pipelines. This system enables AI agents to
         leverage private data stored in Smart Buckets with zero additional
         configuration.
