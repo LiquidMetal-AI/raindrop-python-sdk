@@ -16,7 +16,7 @@ The REST API documentation can be found on [docs.raindrop.com](https://docs.rain
 
 ```sh
 # install from PyPI
-pip install --pre lm-raindrop
+pip install lm-raindrop
 ```
 
 ## Usage
