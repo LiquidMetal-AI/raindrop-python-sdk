@@ -2,7 +2,6 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/lm-raindrop.svg)](https://pypi.org/project/lm-raindrop/)
 
-
 The Raindrop Python library provides convenient access to the Raindrop REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
@@ -17,11 +16,8 @@ The REST API documentation can be found on [docs.raindrop.com](https://docs.rain
 
 ```sh
 # install from PyPI
-pip install --pre lm-raindrop
+pip install lm-raindrop
 ```
-
-> [!NOTE]
-> Once this package is [published to PyPI](https://app.stainless.com/docs/guides/publish), this will become: `pip install --pre raindrop`
 
 ## Usage
 
@@ -82,6 +78,25 @@ Nested request parameters are [TypedDicts](https://docs.python.org/3/library/typ
 - Converting to a dictionary, `model.to_dict()`
 
 Typed requests and responses provide autocomplete and documentation within your editor. If you would like to see type errors in VS Code to help catch bugs earlier, set `python.analysis.typeCheckingMode` to `basic`.
+
+## File uploads
+
+Request parameters that correspond to file uploads can be passed as `bytes`, a [`PathLike`](https://docs.python.org/3/library/os.html#os.PathLike) instance or a tuple of `(filename, contents, media type)`.
+
+```python
+from pathlib import Path
+from lm_raindrop import Raindrop
+
+client = Raindrop()
+
+client.object.upload(
+    key="key",
+    bucket="bucket",
+    body=Path("/path/to/file"),
+)
+```
+
+The async client uses the exact same interface. If you pass a [`PathLike`](https://docs.python.org/3/library/os.html#os.PathLike) instance, the file contents will be read asynchronously automatically.
 
 ## Handling errors
 

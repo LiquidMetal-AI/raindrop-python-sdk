@@ -4,7 +4,10 @@ from __future__ import annotations
 
 from .text_result import TextResult as TextResult
 from .search_response import SearchResponse as SearchResponse
+from .object_upload_params import ObjectUploadParams as ObjectUploadParams
 from .search_perform_params import SearchPerformParams as SearchPerformParams
+from .object_delete_response import ObjectDeleteResponse as ObjectDeleteResponse
+from .object_upload_response import ObjectUploadResponse as ObjectUploadResponse
 from .search_get_results_params import SearchGetResultsParams as SearchGetResultsParams
 from .chunk_search_create_params import ChunkSearchCreateParams as ChunkSearchCreateParams
 from .chunk_search_create_response import ChunkSearchCreateResponse as ChunkSearchCreateResponse

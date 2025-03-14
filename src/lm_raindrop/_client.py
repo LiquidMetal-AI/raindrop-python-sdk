@@ -24,7 +24,7 @@ from ._utils import (
     get_async_library,
 )
 from ._version import __version__
-from .resources import search, chunk_search, document_query, summarize_page
+from .resources import object, search, chunk_search, document_query, summarize_page
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import RaindropError, APIStatusError
 from ._base_client import (
@@ -50,6 +50,7 @@ class Raindrop(SyncAPIClient):
     document_query: document_query.DocumentQueryResource
     chunk_search: chunk_search.ChunkSearchResource
     summarize_page: summarize_page.SummarizePageResource
+    object: object.ObjectResource
     with_raw_response: RaindropWithRawResponse
     with_streaming_response: RaindropWithStreamedResponse
 
@@ -111,6 +112,7 @@ class Raindrop(SyncAPIClient):
         self.document_query = document_query.DocumentQueryResource(self)
         self.chunk_search = chunk_search.ChunkSearchResource(self)
         self.summarize_page = summarize_page.SummarizePageResource(self)
+        self.object = object.ObjectResource(self)
         self.with_raw_response = RaindropWithRawResponse(self)
         self.with_streaming_response = RaindropWithStreamedResponse(self)
 
@@ -224,6 +226,7 @@ class AsyncRaindrop(AsyncAPIClient):
     document_query: document_query.AsyncDocumentQueryResource
     chunk_search: chunk_search.AsyncChunkSearchResource
     summarize_page: summarize_page.AsyncSummarizePageResource
+    object: object.AsyncObjectResource
     with_raw_response: AsyncRaindropWithRawResponse
     with_streaming_response: AsyncRaindropWithStreamedResponse
 
@@ -285,6 +288,7 @@ class AsyncRaindrop(AsyncAPIClient):
         self.document_query = document_query.AsyncDocumentQueryResource(self)
         self.chunk_search = chunk_search.AsyncChunkSearchResource(self)
         self.summarize_page = summarize_page.AsyncSummarizePageResource(self)
+        self.object = object.AsyncObjectResource(self)
         self.with_raw_response = AsyncRaindropWithRawResponse(self)
         self.with_streaming_response = AsyncRaindropWithStreamedResponse(self)
 
@@ -399,6 +403,7 @@ class RaindropWithRawResponse:
         self.document_query = document_query.DocumentQueryResourceWithRawResponse(client.document_query)
         self.chunk_search = chunk_search.ChunkSearchResourceWithRawResponse(client.chunk_search)
         self.summarize_page = summarize_page.SummarizePageResourceWithRawResponse(client.summarize_page)
+        self.object = object.ObjectResourceWithRawResponse(client.object)
 
 
 class AsyncRaindropWithRawResponse:
@@ -407,6 +412,7 @@ class AsyncRaindropWithRawResponse:
         self.document_query = document_query.AsyncDocumentQueryResourceWithRawResponse(client.document_query)
         self.chunk_search = chunk_search.AsyncChunkSearchResourceWithRawResponse(client.chunk_search)
         self.summarize_page = summarize_page.AsyncSummarizePageResourceWithRawResponse(client.summarize_page)
+        self.object = object.AsyncObjectResourceWithRawResponse(client.object)
 
 
 class RaindropWithStreamedResponse:
@@ -415,6 +421,7 @@ class RaindropWithStreamedResponse:
         self.document_query = document_query.DocumentQueryResourceWithStreamingResponse(client.document_query)
         self.chunk_search = chunk_search.ChunkSearchResourceWithStreamingResponse(client.chunk_search)
         self.summarize_page = summarize_page.SummarizePageResourceWithStreamingResponse(client.summarize_page)
+        self.object = object.ObjectResourceWithStreamingResponse(client.object)
 
 
 class AsyncRaindropWithStreamedResponse:
@@ -423,6 +430,7 @@ class AsyncRaindropWithStreamedResponse:
         self.document_query = document_query.AsyncDocumentQueryResourceWithStreamingResponse(client.document_query)
         self.chunk_search = chunk_search.AsyncChunkSearchResourceWithStreamingResponse(client.chunk_search)
         self.summarize_page = summarize_page.AsyncSummarizePageResourceWithStreamingResponse(client.summarize_page)
+        self.object = object.AsyncObjectResourceWithStreamingResponse(client.object)
 
 
 Client = Raindrop
