@@ -1,5 +1,28 @@
 # Changelog
 
+## 1.1.0 (2025-03-18)
+
+Full Changelog: [v1.0.0...v1.1.0](https://github.com/LiquidMetal-AI/raindrop-python-sdk/compare/v1.0.0...v1.1.0)
+
+### Features
+
+* **api:** updating API spec with latest changes ([#27](https://github.com/LiquidMetal-AI/raindrop-python-sdk/issues/27)) ([496f8ce](https://github.com/LiquidMetal-AI/raindrop-python-sdk/commit/496f8ce56575936ddb68ba45972be064a3bbbc1c))
+* **api:** updating API spec with latest changes ([#28](https://github.com/LiquidMetal-AI/raindrop-python-sdk/issues/28)) ([dbf3266](https://github.com/LiquidMetal-AI/raindrop-python-sdk/commit/dbf32662a64a9738f659a44a71e08e9328f2648e))
+
+
+### Bug Fixes
+
+* **ci:** ensure pip is always available ([#25](https://github.com/LiquidMetal-AI/raindrop-python-sdk/issues/25)) ([3b2d2be](https://github.com/LiquidMetal-AI/raindrop-python-sdk/commit/3b2d2be1e6e722a8ec95cca24a8f9cce02b82ea3))
+* **ci:** remove publishing patch ([#26](https://github.com/LiquidMetal-AI/raindrop-python-sdk/issues/26)) ([8781cd8](https://github.com/LiquidMetal-AI/raindrop-python-sdk/commit/8781cd8f56a9525a3340b05e5b1d467c48bac0be))
+* **types:** handle more discriminated union shapes ([#24](https://github.com/LiquidMetal-AI/raindrop-python-sdk/issues/24)) ([08b9723](https://github.com/LiquidMetal-AI/raindrop-python-sdk/commit/08b97234f6813de31d9c757f394459d3272a5907))
+
+
+### Chores
+
+* **internal:** bump rye to 0.44.0 ([#23](https://github.com/LiquidMetal-AI/raindrop-python-sdk/issues/23)) ([b777cfe](https://github.com/LiquidMetal-AI/raindrop-python-sdk/commit/b777cfe255094c6e94ecaf44400841c93bfc4231))
+* **internal:** codegen related update ([#22](https://github.com/LiquidMetal-AI/raindrop-python-sdk/issues/22)) ([108c3e1](https://github.com/LiquidMetal-AI/raindrop-python-sdk/commit/108c3e1b4393f4701961a8745eb07676dd164243))
+* **internal:** remove extra empty newlines ([#20](https://github.com/LiquidMetal-AI/raindrop-python-sdk/issues/20)) ([1b6faba](https://github.com/LiquidMetal-AI/raindrop-python-sdk/commit/1b6faba3292e27e0406ccbdac52a613f0b3e6d75))
+
 ## 1.0.0 (2025-03-13)
 
 Full Changelog: [v0.1.0-alpha.4...v1.0.0](https://github.com/LiquidMetal-AI/raindrop-python-sdk/compare/v0.1.0-alpha.4...v1.0.0)
