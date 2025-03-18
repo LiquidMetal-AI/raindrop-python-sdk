@@ -65,10 +65,11 @@ class ObjectResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ObjectDeleteResponse:
-        """Delete a file from the storage system.
+        """Delete a file from a Smart Bucket or regular bucket.
 
-        The bucket parameter is used for access
-        control, while the key determines which object to delete.
+        The bucket parameter (ID)
+        is used to identify the bucket to delete from. The key is the path to the object
+        in the bucket.
 
         Args:
           extra_headers: Send extra headers
@@ -103,11 +104,11 @@ class ObjectResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> BinaryAPIResponse:
-        """Download a file from the storage system.
+        """Download a file from a Smart Bucket or regular bucket.
 
-        The bucket parameter is used for access
-        control, while the key determines which object to retrieve. Supports streaming
-        downloads.
+        The bucket parameter (ID)
+        is used to identify the bucket to download from. The key is the path to the
+        object in the bucket.
 
         Args:
           extra_headers: Send extra headers
@@ -144,11 +145,11 @@ class ObjectResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ObjectUploadResponse:
-        """Upload a file to the storage system.
+        """Upload a file to a Smart Bucket or regular bucket.
 
-        The bucket parameter is used for access
-        control, while the key determines the storage path. Supports streaming uploads
-        for files of any size.
+        The bucket parameter (ID) is
+        used to identify the bucket to upload to. The key is the path to the object in
+        the bucket.
 
         Args:
           extra_headers: Send extra headers
@@ -205,10 +206,11 @@ class AsyncObjectResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ObjectDeleteResponse:
-        """Delete a file from the storage system.
+        """Delete a file from a Smart Bucket or regular bucket.
 
-        The bucket parameter is used for access
-        control, while the key determines which object to delete.
+        The bucket parameter (ID)
+        is used to identify the bucket to delete from. The key is the path to the object
+        in the bucket.
 
         Args:
           extra_headers: Send extra headers
@@ -243,11 +245,11 @@ class AsyncObjectResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncBinaryAPIResponse:
-        """Download a file from the storage system.
+        """Download a file from a Smart Bucket or regular bucket.
 
-        The bucket parameter is used for access
-        control, while the key determines which object to retrieve. Supports streaming
-        downloads.
+        The bucket parameter (ID)
+        is used to identify the bucket to download from. The key is the path to the
+        object in the bucket.
 
         Args:
           extra_headers: Send extra headers
@@ -284,11 +286,11 @@ class AsyncObjectResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ObjectUploadResponse:
-        """Upload a file to the storage system.
+        """Upload a file to a Smart Bucket or regular bucket.
 
-        The bucket parameter is used for access
-        control, while the key determines the storage path. Supports streaming uploads
-        for files of any size.
+        The bucket parameter (ID) is
+        used to identify the bucket to upload to. The key is the path to the object in
+        the bucket.
 
         Args:
           extra_headers: Send extra headers
