@@ -27,6 +27,7 @@ from .._response import (
     async_to_custom_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
+from ..types.object_list_response import ObjectListResponse
 from ..types.object_delete_response import ObjectDeleteResponse
 from ..types.object_upload_response import ObjectUploadResponse
 
@@ -53,6 +54,41 @@ class ObjectResource(SyncAPIResource):
         """
         return ObjectResourceWithStreamingResponse(self)
 
+    def list(
+        self,
+        bucket: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ObjectListResponse:
+        """List all objects in a Smart Bucket or regular bucket.
+
+        The bucket parameter (ID)
+        is used to identify the bucket to list objects from.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not bucket:
+            raise ValueError(f"Expected a non-empty value for `bucket` but received {bucket!r}")
+        return self._get(
+            f"/v1/object/{bucket}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ObjectListResponse,
+        )
+
     def delete(
         self,
         key: str,
@@ -65,10 +101,11 @@ class ObjectResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ObjectDeleteResponse:
-        """Delete a file from the storage system.
+        """Delete a file from a Smart Bucket or regular bucket.
 
-        The bucket parameter is used for access
-        control, while the key determines which object to delete.
+        The bucket parameter (ID)
+        is used to identify the bucket to delete from. The key is the path to the object
+        in the bucket.
 
         Args:
           extra_headers: Send extra headers
@@ -103,11 +140,11 @@ class ObjectResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> BinaryAPIResponse:
-        """Download a file from the storage system.
+        """Download a file from a Smart Bucket or regular bucket.
 
-        The bucket parameter is used for access
-        control, while the key determines which object to retrieve. Supports streaming
-        downloads.
+        The bucket parameter (ID)
+        is used to identify the bucket to download from. The key is the path to the
+        object in the bucket.
 
         Args:
           extra_headers: Send extra headers
@@ -144,11 +181,11 @@ class ObjectResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ObjectUploadResponse:
-        """Upload a file to the storage system.
+        """Upload a file to a Smart Bucket or regular bucket.
 
-        The bucket parameter is used for access
-        control, while the key determines the storage path. Supports streaming uploads
-        for files of any size.
+        The bucket parameter (ID) is
+        used to identify the bucket to upload to. The key is the path to the object in
+        the bucket.
 
         Args:
           extra_headers: Send extra headers
@@ -193,6 +230,41 @@ class AsyncObjectResource(AsyncAPIResource):
         """
         return AsyncObjectResourceWithStreamingResponse(self)
 
+    async def list(
+        self,
+        bucket: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ObjectListResponse:
+        """List all objects in a Smart Bucket or regular bucket.
+
+        The bucket parameter (ID)
+        is used to identify the bucket to list objects from.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not bucket:
+            raise ValueError(f"Expected a non-empty value for `bucket` but received {bucket!r}")
+        return await self._get(
+            f"/v1/object/{bucket}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ObjectListResponse,
+        )
+
     async def delete(
         self,
         key: str,
@@ -205,10 +277,11 @@ class AsyncObjectResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ObjectDeleteResponse:
-        """Delete a file from the storage system.
+        """Delete a file from a Smart Bucket or regular bucket.
 
-        The bucket parameter is used for access
-        control, while the key determines which object to delete.
+        The bucket parameter (ID)
+        is used to identify the bucket to delete from. The key is the path to the object
+        in the bucket.
 
         Args:
           extra_headers: Send extra headers
@@ -243,11 +316,11 @@ class AsyncObjectResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AsyncBinaryAPIResponse:
-        """Download a file from the storage system.
+        """Download a file from a Smart Bucket or regular bucket.
 
-        The bucket parameter is used for access
-        control, while the key determines which object to retrieve. Supports streaming
-        downloads.
+        The bucket parameter (ID)
+        is used to identify the bucket to download from. The key is the path to the
+        object in the bucket.
 
         Args:
           extra_headers: Send extra headers
@@ -284,11 +357,11 @@ class AsyncObjectResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ObjectUploadResponse:
-        """Upload a file to the storage system.
+        """Upload a file to a Smart Bucket or regular bucket.
 
-        The bucket parameter is used for access
-        control, while the key determines the storage path. Supports streaming uploads
-        for files of any size.
+        The bucket parameter (ID) is
+        used to identify the bucket to upload to. The key is the path to the object in
+        the bucket.
 
         Args:
           extra_headers: Send extra headers
@@ -317,6 +390,9 @@ class ObjectResourceWithRawResponse:
     def __init__(self, object: ObjectResource) -> None:
         self._object = object
 
+        self.list = to_raw_response_wrapper(
+            object.list,
+        )
         self.delete = to_raw_response_wrapper(
             object.delete,
         )
@@ -333,6 +409,9 @@ class AsyncObjectResourceWithRawResponse:
     def __init__(self, object: AsyncObjectResource) -> None:
         self._object = object
 
+        self.list = async_to_raw_response_wrapper(
+            object.list,
+        )
         self.delete = async_to_raw_response_wrapper(
             object.delete,
         )
@@ -349,6 +428,9 @@ class ObjectResourceWithStreamingResponse:
     def __init__(self, object: ObjectResource) -> None:
         self._object = object
 
+        self.list = to_streamed_response_wrapper(
+            object.list,
+        )
         self.delete = to_streamed_response_wrapper(
             object.delete,
         )
@@ -365,6 +447,9 @@ class AsyncObjectResourceWithStreamingResponse:
     def __init__(self, object: AsyncObjectResource) -> None:
         self._object = object
 
+        self.list = async_to_streamed_response_wrapper(
+            object.list,
+        )
         self.delete = async_to_streamed_response_wrapper(
             object.delete,
         )
